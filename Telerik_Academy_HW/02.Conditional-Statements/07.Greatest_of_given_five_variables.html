@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>JS Console - Example</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+
+</head>
+<body>
+	<div id="inputdiv">
+		<div class="input">
+			<label for="tb-first">First number: </label>
+			<input type="text" id="tb-first"/>
+		</div>							  
+		<div class="input">		
+			<label for="tb-second">Second number: </label>
+			<input type="text" id="tb-second"/>
+		</div>
+		<div class="input">		
+			<label for="tb-second">Third number: </label>
+			<input type="text" id="tb-third"/>
+		</div>
+		<div class="input">		
+			<label for="tb-second">Forth number: </label>
+			<input type="text" id="tb-forth"/>
+		</div>
+		<div class="input">		
+			<label for="tb-second">Fifth number: </label>
+			<input type="text" id="tb-fifth"/>
+		</div>
+		<div id="inputbutton">
+			<a href="#" onclick="onFindBiggerButtonClick()">Find greatest</a>
+		</div>
+	</div>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>		  
+	<script>														 
+
+function onFindBiggerButtonClick() {
+        var first = jsConsole.readFloat("#tb-first");
+        var second = jsConsole.readFloat("#tb-second");
+        var third = jsConsole.readFloat("#tb-third");
+        var fourth = jsConsole.readFloat("#tb-forth");
+        var fifth = jsConsole.readFloat("#tb-fifth");
+        var greater = first;
+        if (isNaN(first) || isNaN(second) || isNaN(third) || isNaN(fourth) || isNaN(fifth)) {
+            jsConsole.writeLine("Wrong input! All must be numbers");
+            return;
+               }            
+        else if (greater < second) {
+            greater = second;
+        }
+        if (greater < third) {
+            greater = third;
+        }
+        if (greater < fourth) {
+            greater = fourth;
+        }
+        if (greater < fifth) {
+            greater = fifth;
+        }
+        jsConsole.writeLine("The greatest number of  " + first + "; " + second + "; " + third + "; " + fourth + "; " + fifth + "; " + " is: " + greater);
+    }
+										
+	</script>			  
+</body>
+</html>

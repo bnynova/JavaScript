@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Write a script that finds the max and min number from a sequence of numbers</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div>
+	</div>
+	<div>Please enter numbers separated by ", " and space</div>
+	<label for="tb-first">Array: </label>
+	<input type="text" id="tb-first"/>
+	<br />					  
+	<a href="#" onclick="onFindMinMaxClick()">Find Subset</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>		  
+	<script>														
+		function onFindMinMaxClick() {
+			var number = jsConsole.read("#tb-first");
+			var myArray = number.split(", ");
+			var max = parseInt(myArray[0]);
+			var min = parseInt(myArray[0]);
+
+			for (var i = 1; i < myArray.length; i++) {
+				if (parseInt(myArray[i])>max) {
+					max = myArray[i];
+				}
+				if (parseInt(myArray[i])<min) {
+					min = myArray[i];
+				}
+			}
+			jsConsole.writeLine("Max: "+max);
+			jsConsole.writeLine("Min: "+min);
+		}	 
+
+	</script>			  
+</body>
+</html>
