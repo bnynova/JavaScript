@@ -1,0 +1,30 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+var unsavedChanges = false;
+function saveButton(){
+	var ta = document.getElementById("user_post");
+	var btnnn = document.getElementById("btn");
+	if(unsavedChanges){
+		return "You have unsaved work";
+	}
+	else{
+	return "ji";
+	unsavedChanges = true;
+	}
+}
+window.onbeforeunload = saveButton;
+</script>
+</head>
+<body>
+<textarea id="user_post">
+
+</textarea>
+<input id="btn" type="button" onclick="saveButton()" value="Save" />
+
+</body>
+</html>

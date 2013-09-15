@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+<title>HTML5 Logo </title>
+<meta charset="UTF-8">
+<style>
+footer {display:block; border-top: 1px solid orange; margin: 10px; font-family: "Trebuchet MS", Arial, Helvetica, sansserif; font-weight: bold;} 
+article {display:block; font-family: Georgia, "Times New Roman", Times, serif; margin: 5px;} 
+</style>
+<script language="JavaScript"> 
+
+var ctx;														//variable to hold the context.
+var factorvalue = 1; 											//set initial value for scaling 
+var fontfamily = "65px 'Gill Sans Ultra Bold', sans-serif";     //set the fonts for the text drawn on the canvas 
+
+function init() { 												//start of init function 
+ ctx = document.getElementById('canvas').getContext('2d'); 		//set ctx 
+ ctx.font = fontfamily; 										//set font for text drawn on canvas 
+ ctx.save(); 													//save the original coordinate state 
+ dologo(); 														//invoke function to draw the logo
+ }
+ 
+function dologo() { 
+var offsety = 80 ;												//specify amount to adjust the coordinates to draw the shield part of the logo. 
+ctx.restore(); 													//restore original state of coordinates 
+ctx.save(); 													//save it (push onto stack) so it can be restored again 
+ctx.clearRect(0,0,600,400); 									//erase the whole canvas 
+ctx.scale(factorvalue,factorvalue); 							//scale horizontally and vertically using value set by slider 
+ctx.fillText("HTML", 31,60);									//draw the letters: HTML 
+ctx.translate(0,offsety);										//move down the screen (canvas) 
+
+// 5 sided orange background 
+ctx.fillStyle = "#E34C26"; 										//set to official bright orange 
+
+ctx.beginPath(); 	
+ctx.moveTo(39, 250);											//move to indicated position at lower left 
+ctx.lineTo(17, 0); 												//draw line up and more to the left 
+ctx.lineTo(262, 0);												//draw line straight over to the right 
+ctx.lineTo(239, 250);											//draw line down and slightly to the left 
+ctx.lineTo(139, 278); 											//draw line to the middle, low point of the shield 
+ctx.closePath(); 			
+
+ctx.fill(); 	
+ctx.fillStyle = "#F06529"; 
+
+ctx.beginPath(); 
+ctx.moveTo(139, 257); 											//move to middle point, close to the top 
+ctx.lineTo(220, 234);											//draw line to the right and slightly up 
+ctx.lineTo(239, 20); 											//draw line to the right and up 
+ctx.lineTo(139, 20); 											//draw line to the left (point at the middle) 
+ctx.closePath(); 
+
+ctx.fill(); 
+ctx.fillStyle = "#EBEBEB"; 
+
+ctx.beginPath();  
+ctx.moveTo(139, 113); 											//move to middle horizontally, midway vertically 
+ctx.lineTo(98, 113);											//draw line to the left 
+ctx.lineTo(96, 82); 											//draw line up and slightly further left 
+ctx.lineTo(139, 82);											//draw line to right 
+ctx.lineTo(139, 51); 											//draw line up 
+ctx.lineTo(62, 51);  											//draw line to the left
+ctx.lineTo(70, 144); 											//draw line to the left and down 
+ctx.lineTo(139, 144); 											//draw line to the right 
+ctx.closePath(); 
+
+ctx.fill(); 
+
+ctx.beginPath(); 
+ctx.moveTo(139, 193); 											//move to middle point 
+ctx.lineTo(105, 184);											//draw line to the left and up 
+ctx.lineTo(103, 159); 											//draw line slightly to the left and up 
+ctx.lineTo(72, 159); 											//draw line more to the left 
+ctx.lineTo(76, 207); 											//draw line slightly to the right and down 
+ctx.lineTo(139, 225);											//draw line to the left and down 
+ctx.closePath(); 
+
+ctx.fill(); 
+ctx.fillStyle = "#FFFFFF"; 										// white, right hand side of the 5 
+
+ctx.beginPath(); 
+ctx.moveTo(139, 113); 											//start at middle pint 
+ctx.lineTo(139, 144);											//draw line down 
+ctx.lineTo(177, 144); 											//draw line to the right 
+ctx.lineTo(173, 184); 											//draw line slightly left and down 
+ctx.lineTo(139, 193); 											//draw line more left and down 
+ctx.lineTo(139, 225); 											//draw line down 
+ctx.lineTo(202, 207); 											//draw line to the right and up 
+ctx.lineTo(210, 113);											//draw line slightly right and up 
+ctx.closePath(); 
+ctx.fill(); 
+
+ctx.beginPath();
+ctx.moveTo(139, 51); 											//move to middle point 
+ctx.lineTo(139, 82); 											//move down 
+ctx.lineTo(213, 82);											//move to the right 
+ctx.lineTo(216, 51); 											//move slightly to the right and up 
+ctx.closePath(); 
+
+ctx.fill();														//fill in white 
+}
+
+function changescale(val) { 									//open function changevalue with parameter 
+ factorvalue = val / 100; 										//set factorvalue to the input divided by 100 
+ dologo(); 
+} 
+</script> 
+</head> 
+<body onLoad="init();"> 
+
+<canvas id="canvas" width="600" height="400">  
+</canvas> 
+<article>
+<input id="slide" type="range" min="0" max="100" value="100" onChange="changescale(this.value)"step="10"/> 
+</article> 
+<article>Built on <ahref="http://people.opera.com/danield/html5/html5logo/">work by Daniel Davis, et al</a>, but don't blame them for the fonts. Check out the use of <em>font-family</em> in the style element and the <em>fontfamily</em> variable in the script element for safe ways to do fonts. I did the scaling. Note also use of semantic elements.</article> 
+<footer>HTML5 Logo by <a href="http://www.w3.org/"><abbrtitle="World Wide Web Consortium">W3C</abbr></a>. 
+</footer> 
+</body> 
+</html> 
