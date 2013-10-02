@@ -1,0 +1,35 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript">
+document.onkeydown = function(event){
+	var key_press = String.fromCharCode(event.keyCode);
+	var key_code = event.keyCode;
+	document.getElementById('kp').innerHTML = key_press;
+	document.getElementById('kc').innerHTML = key_code;
+	
+	var status = document.getElementById('status');
+	
+	status.innerHTML = "Down Event Fired For: " + key_press;
+	if(key_press == "W"){
+		alert("W");
+	}else if(key_press == "A"){
+		alert("A");
+	}
+	
+	document.onkeyup = function(event){
+		var key_press = String.fromCharCode(event.keyCode);
+		var status = document.getElementById('status');
+		status.innerHTML = "UP event fired for:" + key_press;
+	}
+}
+</script>
+</head>
+<body>
+<h2>Javascript Capture Keyboard Input Example</h2>
+Key Pressed : <span id="kp"></span>
+<br />
+Key Code : <span id="kc"></span>
+<p id="status">Keyboard Event Status</p>
+</body>
+</html>

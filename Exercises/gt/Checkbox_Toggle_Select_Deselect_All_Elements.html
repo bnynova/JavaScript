@@ -1,0 +1,24 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+function togglecheckboxes(master, group){
+	var cbarray = document.getElementsByClassName(group);
+	for(var i = 0; i < cbarray.length; i++){
+		var cb = document.getElementById(cbarray[i].id);
+		cb.checked = master.checked;
+	}
+}
+</script>
+</head>
+<body>
+<input type="checkbox" id="cbgroup1_master" onchange="togglecheckboxes(this, 'cbgroup1')">Toggle all<br/>
+
+<input type="checkbox" id="cbl_1" class="cbgroup1" value="1">ithem 1<br/>
+<input type="checkbox" id="cbl_2" class="cbgroup1" value="2">ithem 2<br/>
+<input type="checkbox" id="cbl_3" class="cbgroup1" value="3">ithem 3<br/>
+<input type="checkbox" id="cbl_4" class="cbgroup1" value="4">ithem 4<br/>
+</body>
+</html>

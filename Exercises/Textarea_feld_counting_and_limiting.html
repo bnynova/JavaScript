@@ -1,9 +1,16 @@
 ﻿<!DOCTYPE html> 
 <html>
 <head>
-<title>Textarea Field Counting and Limiting using Javascript</title>
+<title></title>
 <style type="text/css">
-
+div{
+	margin:0px auto;
+	width: 550px;
+	background-color: #1E1E1E;
+	padding: 6px;
+	color: #F8F8F8;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 </style>
 <script language="javascript" type="text/javascript"> 
 	var maxAmount = 250;
@@ -16,7 +23,9 @@
 	}
 </script>
 </head> 
-<body> 
+<body>
+<div>
+<h1>Textarea Field Counting and Limiting</h1> 
 <form>
 <textarea name="ta" rows="6" style="width:340px" 
 		  onKeyDown="textCounter(this.form.ta, this.form.countDisplay)"; 
@@ -25,5 +34,6 @@
 <br />
 <input readonly type="text" name="countDisplay" size="3", maxlength="3" value="250">Counters Remining</form>
 </form>
+</div>
 </body> 
 </html>

@@ -4,31 +4,34 @@
 <title>Typing Text Animation</title>
 <style>
 #myTypingText{
-	width: 200px; heigth: 300px;
-	background: green;
+	margin:0px auto;
+	width: 350px;
+	background-color: #1E1E1E;
+	color: #F8F8F8;
+	padding: 5px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 </style>
 </head> 
 <body> 
-<div id="myTypingText">
-</div>
-
+<div id="myTypingText"></div>
 <script type="text/javascript" language="JavaScript"> 
 var myString = "Place you sting data here, ....";
 var myArray = myString.split("");
-var loopTimer;
+var loopTimer = 0;
 
 function frameLooper(){
+	
 	if(myArray.length > 0){
-		document.getElementById("myTypingText").innerHTML += myArray.shift()
+		document.getElementById("myTypingText").innerHTML += myArray.shift();
 	} else{
-		clearTimeout(loopTimer);
+		clearInterval(loopTimer);
 	}
-	loopTimer = setTimeout('frameLooper()', 200);
+	loopTimer = setInterval("frameLooper()", 100);		
 }
+
 frameLooper();
 </script> 
-
 </body> 
 </html> 
