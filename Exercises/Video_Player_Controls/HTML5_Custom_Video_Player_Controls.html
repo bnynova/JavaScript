@@ -1,0 +1,168 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+div#video_player_box{ 
+	width:550px; background:#000; margin:0px auto;
+}
+div#video_controls_bar{ 
+	background: #1b1b1b; 
+	color:#CCC; 
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+button#playpausebtn{
+	background:url(play.png) no-repeat;
+	border:none;
+	width:27px;
+	height:24px;
+	cursor:pointer;
+	opacity:0.5;
+}
+button#playpausebtn:hover{ 
+	opacity:1; 
+}
+input#seekslider{ 
+	margin: 0 0 10px; 
+	padding: 0px;
+	width:180px; 
+}
+input#volumeslider{ 
+	width: 80px;
+}
+
+input[type='range'] {
+    -webkit-appearance: none !important;
+    background: #000;
+	border:#666 1px solid;
+    height:4px;
+}
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background: #FFF;
+    height:15px;
+    width:15px;
+	border-radius:100%;
+	cursor:pointer;
+}
+button#fullscreenbtn{
+	background:url(full_screen.png) no-repeat;
+	border:none;
+	width:27px;
+	height:24px;
+	cursor:pointer;
+	opacity:0.5;
+}
+button#fullscreenbtn:hover{ 
+	opacity:1; 
+}
+
+button#mutebtn{
+	background:url(mute.png) no-repeat;
+	border:none;
+	width:27px;
+	height:24px;
+	cursor:pointer;
+	opacity:0.5;
+}
+button#mutebtn:hover{ 
+	opacity:1; 
+}
+
+</style>
+<script type="text/javascript">
+var vid, playbtn, seekslider, curtimetext, durtimetext, mutebtn, volumeslider, fullscreenbtn;
+
+function intializePlayer(){
+	//Set object references
+	vid = document.getElementById("my_video");
+	playbtn = document.getElementById("playpausebtn");
+	curtimetext = document.getElementById("curtimetext");
+	durtimetext = document.getElementById("durtimetext");
+	seekslider = document.getElementById("seekslider");
+	mutebtn = document.getElementById("mutebtn");
+	volumeslider = document.getElementById("volumeslider");
+	fullscreenbtn = document.getElementById("fullscreenbtn");
+	
+	//Add event listeners
+	playbtn.addEventListener("click", playPause, false);
+	seekslider.addEventListener("change", vidSeek, false);
+	vid.addEventListener("timeupdate", seekTimeUpdate, false);
+	mutebtn.addEventListener("click", vidmute, false);
+	volumeslider.addEventListener("change", setvolume, false);
+	fullscreenbtn.addEventListener("click", toggleFullScreen, false);
+}
+
+window.onload = intializePlayer;
+
+function playPause(){
+	if(vid.paused){
+		vid.play();
+		playbtn.style.background = "url(play.png) no-repeat";
+	}else{
+		vid.pause();
+		playbtn.style.background = "url(pause.png) no-repeat";
+	}
+}
+function vidSeek(){
+	var seekto = vid.duration * (seekslider.value / 100);
+	vid.currentTime = seekto;
+}
+
+function seekTimeUpdate(){
+	var nt = vid.currentTime * (100 / vid.duration);
+	seekslider.value = nt;
+	var curmins = Math.floor(vid.currentTime / 60);
+	var cursecs = Math.floor(vid.currentTime - curmins * 60);
+	var durmins = Math.floor(vid.duration / 60);
+	var dursecs = Math.floor(vid.duration - durmins * 60);
+	
+	if(cursecs < 10){	cursecs = "0" + cursecs; }
+	if(dursecs < 10){	dursecs = "0" + dursecs; }
+	if(curmins < 10){	curmins = "0" + curmins; }
+	if(durmins < 10){	durmins = "0" + durmins; }
+	curtimetext.innerHTML = curmins + ":" + cursecs;
+	durtimetext.innerHTML = durmins + ":" + dursecs;
+	
+}
+function vidmute(){
+	if(vid.muted){
+		vid.muted = false;
+		mutebtn.style.background = "url(mute.png) no-repeat";
+	}else {
+		vid.muted = true;
+		mutebtn.style.background = "url(un_mute.png) no-repeat";
+	}
+	
+}
+function setvolume(){
+	vid.volume = volumeslider.value / 100;
+}
+function toggleFullScreen(){
+	if(vid.requestFullScreen){
+		vid.requestFullScreen();
+	} else if(vid.webkitRequestFullScreen){
+		vid.webkitRequestFullScreen();
+	} else if(vid.mozRequestFullScreen){
+		vid.mozRequestFullScreen();
+	}
+}
+</script>
+</head>
+<body>
+<div id="video_player_box">
+	<video id="my_video" width="550" height="300" autoplay>
+		<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4">
+	</video>
+	<div id="video_controls_bar">
+		<button id="playpausebtn"></button>
+		<input id="seekslider" type="range" min="0" max="100" value="0" step="1" />
+		<span id="curtimetext"></span> / <span id="durtimetext"></span>
+		<button id="mutebtn"></button>
+		<input id="volumeslider" type="range" min="0" max="100" value="100" step="1" />
+		<button id="fullscreenbtn"></button>
+	</div>
+
+</div>
+</body>
+</html>
