@@ -1,0 +1,71 @@
+div#wrapper{
+	width: 960px;
+	margin: 0 auto;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height:1;
+}
+#myheading_title{
+	text-align: center;
+	background-color: #8C4646;
+	color: #fdfffc;
+
+	border: 2px dashed  #ffffff;
+	box-shadow: 0 0 0 1px #D96459;
+
+	margin: 5px;
+	padding: 20px;
+	font-size: 2.2em;
+}
+
+#myheading_desc{
+	text-align: center;
+	font-size: 1.5em;
+	color: #6a6b4f;
+}
+
+div.contentBox{
+	background: #F2E394;
+	height: 500px;
+	margin: 50px 0 5px 0;
+	border: #CFBFFF 1px dashed;
+}
+
+div#wrapper #menu{
+    text-align:center;
+	margin-top: 50px;
+	padding: 10px;
+}
+
+div#wrapper #menu ul{
+	display: inline;
+}
+
+div#wrapper #menu ul li{
+	display:inline;
+	padding: 3px 15px;
+	color: green;
+}
+div#wrapper #back_button a{
+	margin-top: 0px;
+}
+
+article{
+	padding: 20px;
+}
+
+article h3{
+	margin: 20px 0;
+	font-size: 1.5em;
+}
+
+div#peekaboo{
+	position: fixed;
+	bottom: 0px;
+	right: -352px;
+	background: #c4e6ff;
+	padding: 25px;
+	width: 300px; 
+	height: 60px;
+	font-size: 1.5em;
+}

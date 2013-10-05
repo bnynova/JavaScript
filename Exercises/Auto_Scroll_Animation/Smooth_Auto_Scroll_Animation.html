@@ -1,0 +1,114 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+var scrollY = 150;
+var distance = 40;
+var speed = 24;
+function autoScrollTo(el) {
+	var currentY = window.pageYOffset;
+	var targetY = document.getElementById(el).offsetTop;
+	var bodyHeight = document.body.offsetHeight;
+	var yPos = currentY + window.innerHeight;
+	var animator = setTimeout('autoScrollTo(\''+el+'\')',24);
+	if(yPos > bodyHeight){
+		clearTimeout(animator);
+	} else {
+		if(currentY < targetY-distance){
+		    scrollY = currentY+distance;
+		    window.scroll(150, scrollY);
+	    } else {
+		    clearTimeout(animator);
+	    }
+	}
+}
+function resetScroll(el){
+	var currentY = window.pageYOffset;
+    var targetY = document.getElementById(el).offsetTop;
+	var animator = setTimeout('resetScroll(\''+el+'\')',speed);
+	if(currentY > targetY){
+		scrollY = currentY-distance;
+		window.scroll(0, scrollY);
+	} else {
+		clearTimeout(animator);
+	}
+}
+
+function yScrollHandler(){
+	var win = document.getElementById("peekaboo");
+	if((window.pageYOffset + window.innerHeight) >= document.body.offsetHeight){
+		win.style.transition = "right 0.7s ease-in-out 0s";
+		win.style.right = "0px";
+	} else{
+		win.style.transition = "right 0.7s ease-in-out 0s";
+		win.style.right = "-452px";
+	}
+}
+window.onscroll = yScrollHandler;
+</script>
+</head>
+<body>
+<div id="wrapper">
+<h2 id="myheading_title">Web site name</h2>
+<h3 id="myheading_desc">website description</h3>
+
+<div id="menu">
+	<ul>
+		<li><a href="#" onclick="return false;" onmousedown="autoScrollTo('div1');">Doc section 1</a></li>
+		<li><a href="#" onclick="return false;" onmousedown="autoScrollTo('div2');">Doc section 2</a></li>
+		<li><a href="#" onclick="return false;" onmousedown="autoScrollTo('div3');">Doc section 3</a></li>
+		<li><a href="#" onclick="return false;" onmousedown="autoScrollTo('div4');">Doc section 4</a></li>
+	<ul>
+</div>
+
+<div id="div1" class="contentBox">
+	<article>
+            <header>
+                <h3>Div 1 content</h3>
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin egestas, dui sed cursus placerat, felis metus sollicitudin nunc, nec venenatis augue tellus vitae nisl. Quisque ut venenatis est. Vestibulum non dolor nec sapien imperdiet semper nec quis massa. Phasellus ultrices vestibulum rutrum. Vestibulum auctor felis eget ipsum semper vulputate. Sed congue, metus sit amet tempus pretium, nunc sapien pellentesque elit, ut porttitor eros orci nec arcu. Nunc lobortis risus eget eros viverra dapibus.</p>
+    </article>
+</div>
+	
+	
+	
+<a id="back_button" href="#" onclick="return false;" onmousedown="resetScroll('myheading_title');">Home</a>
+<div id="div2" class="contentBox">
+	<article>
+            <header>
+                <h3>Div 2 content</h3>
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin egestas, dui sed cursus placerat, felis metus sollicitudin nunc, nec venenatis augue tellus vitae nisl. Quisque ut venenatis est. Vestibulum non dolor nec sapien imperdiet semper nec quis massa. Phasellus ultrices vestibulum rutrum. Vestibulum auctor felis eget ipsum semper vulputate. Sed congue, metus sit amet tempus pretium, nunc sapien pellentesque elit, ut porttitor eros orci nec arcu. Nunc lobortis risus eget eros viverra dapibus.</p>
+    </article>
+</div>
+<a id="back_button" href="#" onclick="return false;" onmousedown="resetScroll('myheading_title');">Home</a>
+<div id="div3" class="contentBox">
+	<article>
+            <header>
+                <h3>Div 3 content</h3>
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin egestas, dui sed cursus placerat, felis metus sollicitudin nunc, nec venenatis augue tellus vitae nisl. Quisque ut venenatis est. Vestibulum non dolor nec sapien imperdiet semper nec quis massa. Phasellus ultrices vestibulum rutrum. Vestibulum auctor felis eget ipsum semper vulputate. Sed congue, metus sit amet tempus pretium, nunc sapien pellentesque elit, ut porttitor eros orci nec arcu. Nunc lobortis risus eget eros viverra dapibus.</p>
+    </article>
+</div>
+<a id="back_button" href="#" onclick="return false;" onmousedown="resetScroll('myheading_title');">Home</a>
+<div id="div4" class="contentBox">
+	<article>
+            <header>
+                <h3>Div 4 content</h3>
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin egestas, dui sed cursus placerat, felis metus sollicitudin nunc, nec venenatis augue tellus vitae nisl. Quisque ut venenatis est. Vestibulum non dolor nec sapien imperdiet semper nec quis massa. Phasellus ultrices vestibulum rutrum. Vestibulum auctor felis eget ipsum semper vulputate. Sed congue, metus sit amet tempus pretium, nunc sapien pellentesque elit, ut porttitor eros orci nec arcu. Nunc lobortis risus eget eros viverra dapibus.</p>
+    </article>
+</div>
+<a id="back_button" href="#" onclick="return false;" onmousedown="resetScroll('myheading_title');">Home</a>
+
+
+<div id="peekaboo">Peekaboo!</div>
+
+</div>
+</body>
+</html>
