@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+
+<style>
+#content{
+   width: 800px;
+   margin: 0 auto;
+
+}
+#txtarea{
+   width: 200px;
+   height: 100px;
+   display: block;
+}
+
+</style>
+
+<body onload="generateDiv()">
+    <div id="content">
+    </div>
+    <script>
+        function generateDiv(){
+            var div = document.getElementById("content");
+            var txtarea = document.createElement("textarea");
+            
+            var input1 = document.createElement("input");
+            var input2 = document.createElement("input");
+            
+            txtarea.id = "txtarea";
+            input1.id = "input1";
+            input2.id = "input2";
+
+         
+            div.appendChild(input1);
+            div.appendChild(input2);
+            div.appendChild(txtarea); //appendChild
+
+            input1.type = "color";
+            input2.type = "color";
+
+            input1.onchange = function() { 
+                    var colorr = document.getElementById("input1").value; // cached
+                    document.getElementById("txtarea").style.color = colorr;
+            };
+            
+            input2.onchange = function() { 
+               var color = document.getElementById("input2").value; // cached
+                    document.getElementById("txtarea").style.background = color;
+            };
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+<body>
+<ul>
+	<li><span onclick="Collapser(this)">month1</span>
+		<ul>
+			<li>article1</li>
+			<li>article2</li>
+			<li>etc...</li>
+		</ul>
+	</li>
+	<li><span onclick="Collapser(this)">month2</span>
+	<ul>
+		<li onclick="Collapser(this)">article1
+			<ul>
+				<li>article1</li>
+				<li>article2</li>
+				<li>etc...</li>
+			</ul>
+		</li>
+		<li>article2</li>
+		<li>etc...</li>
+	</ul>
+	</li>
+</ul>
+
+   
+	<script type="text/javascript">  
+   function Collapser(item){
+	
+	if (!item.parentNode.getElementsByTagName("ul")[0]) {
+			return;
+	}
+	
+	var x = item.parentNode.getElementsByTagName("ul")[0];
+	// if already visible, make disappear, otherwise reappear
+	x.style.display = (x.style.display == "") ? 'none' : "";
+	
+	}
+	</script> 
+
+</body>
+</html>

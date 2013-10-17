@@ -1,4 +1,13 @@
-div#wrapper{
+article{
+	padding: 20px;
+}
+
+article h3{
+	margin: 20px 0;
+	font-size: 1.5em;
+}
+
+#wrapper{
 	width: 960px;
 	margin: 0 auto;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -24,46 +33,37 @@ div#wrapper{
 	color: #6a6b4f;
 }
 
-div.contentBox{
+.contentBox{
 	background: #F2E394;
 	height: 500px;
 	margin: 50px 0 5px 0;
 	border: #CFBFFF 1px dashed;
 }
 
-div#wrapper #menu{
+#wrapper #menu{
     text-align:center;
 	margin-top: 50px;
 	padding: 10px;
 }
 
-div#wrapper #menu ul{
+#wrapper #menu ul{
 	display: inline;
 }
 
-div#wrapper #menu ul li{
+#wrapper #menu ul li{
 	display:inline;
 	padding: 3px 15px;
 	color: green;
 }
-div#wrapper #back_button a{
+#wrapper #back_button a{
 	margin-top: 0px;
 }
 
-article{
-	padding: 20px;
-}
-
-article h3{
-	margin: 20px 0;
-	font-size: 1.5em;
-}
-
-div#peekaboo{
+#peekaboo{
 	position: fixed;
 	bottom: 0px;
 	right: -352px;
-	background: #c4e6ff;
+	background: #b6c181;
 	padding: 25px;
 	width: 300px; 
 	height: 60px;

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+#wrapper{
+	width: 960px;
+	margin: 0 auto;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height:1;
+}
+
+div#box1, div#box2{
+	background:#9dceff;
+	width: 400px;
+	height: 200px;
+}
+div#box3{
+	background:#9dceff;
+	width: 400px;
+	height: 0px;
+	overflow: hidden;
+}
+div#box4{
+	background:#9dceff;
+	width: 400px;
+	height: 200px;
+	position:absolute;
+	top: 530px;
+	left: -400px;
+}
+button{
+	width: 80px;
+	height: 30px;
+	text-align: center;
+	margin: 0 auto;
+	
+
+	-webkit-transition: -webkit-transform .33s;
+	transition: transform .33s; /* Animate the transform properties */
+
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d; /* <-NB */
+}
+
+
+</style>
+<script type="text/javascript">
+
+function fadeIn_Out(el){
+	var elem = document.getElementById(el);
+	
+	if (elem.style.opacity == 1){
+		elem.style.transition = "opacity 1.0s linear 0s";
+		elem.style.opacity = 0;
+		
+	} else {
+		elem.style.transition = "opacity 1.0s linear 0s";
+		elem.style.opacity = 1;
+		
+	}
+}
+
+function slideOpen_Close(el){
+	var elem = document.getElementById(el);
+	if(elem.style.height == "0px"){
+		elem.style.transition = "height 1.0s linear 0s";
+		elem.style.height = "200px";
+	} else{
+		elem.style.transition = "height 1.0s linear 0s";
+		elem.style.height = "0px";
+		}	
+}
+
+
+function slideIn_Out(el){
+	var elem = document.getElementById(el);
+	if(elem.style.left == "0px"){
+		elem.style.transition = "left 1.0s linear 0s";
+		elem.style.left = "-400px";
+		} else{
+		elem.style.transition = "left 1.0s linear 0s";
+		elem.style.left = "0px";
+		}
+}
+</script>
+</head>
+<body>
+
+<div id="wrapper">
+
+<button onclick="fadeIn_Out('box2');">Click me</button>
+<div id="box2"> Content ...</div>
+
+<button onclick="slideOpen_Close('box3');">Click me</button>
+<div id="box3"> Content ...</div>
+
+<button onclick="slideIn_Out('box4');">Click me</button>
+<div id="box4"> Content ...</div>
+
+</div>
+</body>
+</html>
+

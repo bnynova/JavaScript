@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DOM Manipulation - HTML Elements</title>
+</head>
+	<style>
+	
+	</style>
+<body onload="generateDiv()">
+	<div id="content">
+	</div>
+	<script>
+		function generateDiv(){
+
+			var maxWidth = screen.width - 100;
+			var maxHeight = screen.height - 300;
+		 	
+			var contentDiv = document.getElementById("content");
+			while (contentDiv.firstChild) {
+				contentDiv.removeChild(contentDiv.firstChild);
+			}
+
+			var count = 15;
+
+			var docFragment = document.createDocumentFragment();
+
+			for (var i = 0; i < count; i++) {
+				var div = document.createElement("div");
+				div.className = "colored";
+				div.style.backgroundColor = generateRandomColor();
+				
+				div.style.width = generateRandom(20, 100) +"px";
+    			div.style.height = generateRandom(20, 100) +"px";
+
+    			div.style.position = "absolute";
+    			var topPos = parseInt(Math.random() * (maxHeight - 40));
+				div.style.top = topPos + "px";
+				var left = parseInt(Math.random() * (maxWidth - 40));
+				div.style.left = left + "px";
+					
+				div.style.border = "solid";
+				div.style.borderWidth = generateRandom(1, 20) +"px";
+				div.style.borderColor = generateRandomColor();
+
+				div.innerHTML = "<strong>div</strong>";
+
+				docFragment.appendChild(div);
+
+			}
+			contentDiv.appendChild(docFragment);
+			
+
+			function generateRandom(min, max) {
+			    var number = Math.floor(Math.random() * (max - min )) + min;
+			    return number;
+			}
+
+
+			function generateRandomColor() {
+				var red = (Math.random() * 256) | 0;
+				var green = (Math.random() * 256) | 0;
+				var blue = (Math.random() * 256) | 0;
+
+				return "rgb(" + red + "," + green + "," + blue + ")";
+			}
+
+		}
+	</script>
+</body>
+</html>

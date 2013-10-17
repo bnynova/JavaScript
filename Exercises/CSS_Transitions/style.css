@@ -1,0 +1,38 @@
+#wrapper{
+	width: 960px;
+	margin: 0 auto;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height:1;
+}
+
+div#box1, div#box2{
+	background:#9dceff;
+	width: 400px;
+	height: 200px;
+}
+div#box3{
+	background:#9dceff;
+	width: 400px;
+	height: 0px;
+	overflow: hidden;
+}
+div#box4{
+	background:#9dceff;
+	width: 400px;
+	height: 200px;
+	position:absolute;
+	top: 530px;
+	left: -400px;
+}
+button{
+	width: 80px;
+	height: 30px;
+	text-align: center;
+	margin: 0 auto;
+	-webkit-transition: -webkit-transform .33s;
+	transition: transform .33s; /* Animate the transform properties */
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d; /* <-NB */
+}
+

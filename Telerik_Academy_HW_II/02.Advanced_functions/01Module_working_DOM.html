@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DOM Manipulation - HTML Elements</title>
+</head>
+	<style>
+	
+	</style>
+<body>
+	<div>        
+    </div>
+	<script>
+		var domModule = (function () {
+	        var element;
+	        var MAX_BUFFER_ELEMENTS = 100;
+	        var bufferElements = [];
+
+			//Get elements by CSS selector
+	        function getElement(selector) {
+	            return document.querySelector(selector);
+	        }
+	        function getElements(selector) {
+	            return document.querySelectorAll(selector);
+	        }
+			
+			//Add DOM element to parent element given by selector
+	        function appendChild(child, selector) {
+	            element = getElement(selector);
+	            element.appendChild(child);
+	        }
+
+	        //Remove element from the DOM  by given selector
+	        function removeChild(parent, selector) {
+	            var removeElements = getElements(parent + " " + selector);
+	            for (var i = 0; i < removeElements.length; i++) {
+	                element = removeElements[i].parentNode;
+	                element.removeChild(removeElements[i]);
+	            }
+	        }
+
+	        //Attach event to given selector by given event type and event hander
+	        function addHandler(selector, eventType, eventHandler) {
+	            var elements = getElements(selector);
+	            for (var i = 0; i < elements.length; i++) {
+	                if (elements[i].addEventListener) {
+	                    elements[i].addEventListener(eventType, eventHandler, false);
+	                } else {
+	                    element[i].attachEvent("on" + eventType, eventHandler);
+	                }
+
+	            }
+	        }
+	       
+	        return {
+	            appendChild: appendChild,
+	            removeChild: removeChild,
+	            addHandler: addHandler,
+	            
+	        };
+	    })();
+	    var div = document.createElement("div");
+	    domModule.appendChild(div, "#wrapper");
+	    //remove the first li from each ul
+	    domModule.removeChild("ul","li:first-child"); 
+	    domModule.addHandler("a.button", 'click',  function(){alert("Clicked")});
+	    
+	</script>
+</body>
+</html>
