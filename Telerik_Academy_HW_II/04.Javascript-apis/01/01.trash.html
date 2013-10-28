@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <title>Drag'n'drop</title>
+ 
+    <style>
+ 
+        #imageContainer {
+            float:left;
+            width:400px;
+            height:400px;
+        }
+
+        #binWrapper {
+            position:relative;
+            top:20px;
+            left:30px;
+            width: 100px;
+            height: 100px;
+        }
+ 
+        img {
+            position:relative;
+        }
+ 
+        #bin {
+            width:100px;
+            height:100px;
+        }
+    </style>
+ 
+    <script>
+        function changeBinImage(newState) {
+            var bin = document.getElementById("bin");
+            if (newState == "opened") {
+                bin.src = "trash_open.jpg";
+            }          
+            else if (newState == "closed") {
+                bin.src = "trash_close.jpg";
+            }
+        }
+
+        //Where to Drop
+        //By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element.
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+ 
+        //What to Drag
+        //Fires every time the mouse is moved while the object is being dragged.
+        function drag(ev) {
+            ev.dataTransfer.setData("dragged-id", ev.target.id);  //specify what data to be dragged, sets the data type and the value of the dragged data
+        }
+ 
+        //Do the Drop
+        //The drop event is fired on the element where the drop was occured at the end of the drag operation. A listener would be responsible for retrieving the data being dragged and inserting it at the drop location.
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("dragged-id");
+            var trashToRemove = document.getElementById(data);
+            imageContainer.removeChild(trashToRemove);
+        }
+ 
+        function dropper(ev) {
+            ev.preventDefault(); //prevent the browser default handling of the data
+            var data = ev.dataTransfer.getData("dragged-id");
+            var trashToMove = document.getElementById(data); // The dragged data is the id of the dragged element ("drag1"); Append the dragged 
+            var newX = ev.clientX;
+            var newY = ev.clientY;
+            trashToMove.top = newX + "px";
+            trashToMove.left = newY + "px";
+            ev.target.appendChild(trashToMove);
+        }
+ 
+        function getRandomPosition(start, end) {
+            var random = Math.floor((Math.random() * (end - start) + start));
+            return random;
+        }
+ 
+        function loadTrash(numberOfTrashes) {
+            var docFragment = document.createDocumentFragment();
+            var trash;
+ 
+            for (var i = 0; i < numberOfTrashes; i++) {
+                trash = document.createElement("img");
+                trash.style.position = "relative";
+                trash.style.top = getRandomPosition(0, 250) + "px";
+                trash.style.left = getRandomPosition(0, 150) + "px";
+                trash.src = "coca-cola.jpg";
+                trash.style.height = 20 + "px";
+                trash.style.width = 20 + "px";
+                trash.draggable = "true";
+                trash.setAttribute('ondragstart', 'drag(event)');
+                trash.id = "image " + i;
+                docFragment.appendChild(trash);
+            }
+ 
+            document.getElementById("imageContainer").appendChild(docFragment);
+        }
+    </script>
+</head>
+<body onload="loadTrash(15)" ondragover="allowDrop(event)">
+    <div id="imageContainer" ondragover="allowDrop(event)" ondrop="dropper(event)">
+        
+        <div id="binWrapper" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="bin" ondragover="changeBinImage('opened')" onmouseout="changeBinImage('closed')" src="trash_close.jpg" alt="This is the bin" />
+        </div>
+    </div>
+</body>
+</html>
