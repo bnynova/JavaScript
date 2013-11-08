@@ -1,0 +1,97 @@
+#wrapper{
+	width: 700px;
+	height: 500px;
+	background: lightblue;
+	margin: 0px auto;
+	position: relative;
+	overflow: hidden;
+}
+
+canavs{
+	display: block;
+}
+
+#tree{
+	border-bottom: 375px solid #5b9a68;
+	border-left: 160px solid transparent;
+	border-right: 160px solid transparent;
+	position: absolute;
+	top: 90px;	left: 250px;
+	height: 0;	width: 0;
+}
+#trunk{
+	background: #3b543f;
+	width: 40px;
+	height: 130px;
+	position: absolute;
+	bottom: -430px;
+	left: -25px;
+}
+#right_branch{
+	background: #3b543f;
+	width: 10px;
+	height: 70px;
+	position: absolute;
+
+	-webkit-transform: rotate(60deg);
+	-moz-transform: rotate(60deg);
+	transform: rotate(60deg);
+
+	top: 20px;
+	left: 42px;	
+}
+
+#right_branch_2{
+	background: #3b543f;
+	width: 15px;
+	height: 60px;
+	position: absolute;
+
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	transform: rotate(45deg);
+
+	top: -10px;
+	left: 35px;	
+}
+
+#left_branch{
+	background: #3b543f;
+	width: 8px;
+	height: 70px;
+	position: absolute;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+
+	top: 10px;
+	left: -10px;	
+}
+
+#ball1{
+	width: 50px;
+	height: 50px;
+	border-radius:50px;
+	position: absolute;
+	top: -60px;
+	left: -40px;	
+}
+
+#ball2{
+	width: 40px;
+	height: 40px;
+	border-radius:50px;
+	position: absolute;
+	top: -90px;
+	left: 50px;	
+}
+
+#ball3{
+	width: 25px;
+	height: 25px;
+	border-radius:50px;
+	position: absolute;
+	top: -160px;
+	left: 40px;	
+}
